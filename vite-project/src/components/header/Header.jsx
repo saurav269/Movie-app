@@ -73,12 +73,10 @@ const Header = () => {
   },[location]);
 
   useEffect(() => {
-    window.addEventListener("scroll", controlNavbar)
-
+    window.addEventListener("scroll", controlNavbar) 
     return () => {
-      window.addEventListener("scroll", controlNavbar)
+      window.removeEventListener("scroll", controlNavbar)
     }
-
   },[lastScrollY])
 
 
