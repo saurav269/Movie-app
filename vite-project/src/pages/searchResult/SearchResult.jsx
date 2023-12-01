@@ -41,7 +41,7 @@ const SearchResult = () => {
   };
 
   useEffect(() => {
-    setPageNum(1);
+    // setPageNum(1);
     fetchInitialData();
   }, [query]);
   return (
