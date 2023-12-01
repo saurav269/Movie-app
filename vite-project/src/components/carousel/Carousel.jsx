@@ -14,17 +14,27 @@ import "./style.scss";
 import ContentWrapper from '../contentWrapper/ContentWrapper';
 import Img from '../lazyLoadImage/Img';
 import CircleRating from '../circleRating/CircleRating';
+import Genres from '../genres/Genres';
 
 const Carousel = ({data, loading}) => {
 
-    const carouselContainer = useRef();
+    const carouselContainer = useRef(null);
     const {url} = useSelector((state) => state.home);
     const navigate = useNavigate();
 
    //FOR CREATING A METHOD OF NAVIGATION LEFT/RIGHT
    const navigation = (dir) => {
+    const container = carouselContainer.current;
 
-   }
+    const itemWidth = container.offsetWidth; // Adjust this based on item width
+
+    const scrollAmount = dir === "left" ? container.scrollLeft - (itemWidth + 20) : container.scrollLeft + (itemWidth + 20);
+
+    container.scrollTo({
+        left: scrollAmount,
+        behavior: "smooth",
+    });
+   };
 
    const skItem = () =>{
     return (
@@ -56,7 +66,9 @@ const Carousel = ({data, loading}) => {
          onClick={() => navigation("right")}
          />
          {!loading ? (
-            <div className="carouselItems">
+            <div className="carouselItems"
+            ref={carouselContainer}
+            >
                 {data?.map((item) =>{
                     const posterUrl = item.poster_path ? url.poster + item.poster_path : PosterFallback
                     return (
@@ -67,6 +79,7 @@ const Carousel = ({data, loading}) => {
                                 <CircleRating 
                                 rating = {item.vote_average.toFixed(1)}
                                 />
+                                <Genres data={item.genre_ids.slice(0, 2)}/>
                             </div>
                             <div className="textBlock">
                                 <span className='title'>
