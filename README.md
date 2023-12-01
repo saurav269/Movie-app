@@ -1,1 +1,1 @@
-# Movie-app
+# Movie Suggestion App Documentation
