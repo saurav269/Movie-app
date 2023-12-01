@@ -21,7 +21,7 @@
 <h3>TMDB_TOKEN : YOUR OWN API TOKEN</h3>
 
 <h3>Usage</h3>
-<p>1. Start the development server: <br> 'npm run dev' </br></p>
+<p>1. Start the development server: <br> npm run dev </br></p>
 <p>2.Open your browser and navigate to http://localhost:3000.</p>
 <p>Use the app to search for movies, view details, sort/filter results, and save favorites.</p>
 
