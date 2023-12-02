@@ -1,3 +1,5 @@
+
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { useEffect, useState } from "react";
 import { fetchDataApi } from "./utilis/api";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,6 +12,12 @@ import Explore from "./pages/explore/Explore";
 import PagenotFound from "./pages/404/PagenotFound";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
+import Register from './pages/auth/Register';
+import ForgotPass from './pages/auth/ForgotPass';
+import Login from './pages/auth/Login';
+import PrivateRoute from './components/routes/PrivateRoute';
+
+
 
 function App() {
   const dispatch = useDispatch();
@@ -64,10 +72,31 @@ function App() {
     <>
       <Header />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route
+          path="/"
+          element={
+            <PrivateRoute>
+              <Home />
+            </PrivateRoute>
+          }
+        />
+        <Route path="/register" element={<Register />} />
+        <Route path="/forgot-password" element={<ForgotPass />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/:mediaType/:id" element={<Details />} />
-        <Route path="/search/:query" element={<SearchResult />} />
-        <Route path="/explore/:mediaType" element={<Explore />} />
+        <Route path="/search/:query" element={
+          <PrivateRoute>
+            <SearchResult />
+          </PrivateRoute>
+        } />
+        <Route
+          path="/explore/:mediaType"
+          element={
+            <PrivateRoute>
+              <Explore />
+            </PrivateRoute>
+          }
+        />
         <Route path="*" element={<PagenotFound />} />
       </Routes>
       <Footer />
