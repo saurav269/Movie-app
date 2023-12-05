@@ -9,7 +9,7 @@ import Home from "./pages/home/Home";
 import Details from "./pages/details/Details";
 import SearchResult from "./pages/searchResult/SearchResult";
 import Explore from "./pages/explore/Explore";
-import PagenotFound from "./pages/404/PagenotFound";
+// import PagenotFound from "./pages/404/PagenotFound";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import Register from './pages/auth/Register';
@@ -97,7 +97,7 @@ function App() {
             </PrivateRoute>
           }
         />
-        <Route path="*" element={<PagenotFound />} />
+        {/* <Route path="*" element={<PagenotFound />} /> */}
       </Routes>
       <Footer />
     </>
