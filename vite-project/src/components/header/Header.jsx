@@ -6,7 +6,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import "./style.scss";
 import logo from "../../assets/movix-logo.svg";
 import ContentWrapper from "../contentWrapper/ContentWrapper";
-import { useAuth } from "../../context/AuthContext";
+
 
 const Header = () => {
   const [show, setShow] = useState("top");
@@ -16,7 +16,7 @@ const Header = () => {
   const [showSearch, setShowSearch] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
-  const { authState, logoutUser } = useAuth();
+
 
   
   //FOR NAVIGATION PURPOSE
@@ -51,16 +51,6 @@ const Header = () => {
       },1000)
     }
   };
-
-    //LOGOUT FUNCTIONALITY
-    const handleLogout=()=>{
-      localStorage.clear()
-      // toast.success('Logout Successful!')
-      navigate('/login')
-      logoutUser(); // Call the logoutUser function from context
-  }
-
-
 
   //FOR NAVBAR TRANSITIONING
   const controlNavbar=()=>{
@@ -103,11 +93,6 @@ const Header = () => {
           <li className="menuItem">
             <HiOutlineSearch  onClick={openSearch}/>
           </li>
-          {authState.isAuth ? (
-        <button className="btn btn-danger" onClick={handleLogout}>
-          Logout
-        </button>
-      ) : null}
         </ul>
 
         <div className="mobileMenuItems">
