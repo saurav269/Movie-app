@@ -9,13 +9,13 @@ import Home from "./pages/home/Home";
 import Details from "./pages/details/Details";
 import SearchResult from "./pages/searchResult/SearchResult";
 import Explore from "./pages/explore/Explore";
-// import PagenotFound from "./pages/404/PagenotFound";
+import PagenotFound from "./pages/404/PagenotFound";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
-import Register from './pages/auth/Register';
-import ForgotPass from './pages/auth/ForgotPass';
-import Login from './pages/auth/Login';
-import PrivateRoute from './components/routes/PrivateRoute';
+// import Register from './pages/auth/Register';
+// import ForgotPass from './pages/auth/ForgotPass';
+// import Login from './pages/auth/Login';
+// import PrivateRoute from './components/routes/PrivateRoute';
 
 
 
@@ -74,30 +74,18 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={
-            <PrivateRoute>
-              <Home />
-            </PrivateRoute>
-          }
+          element={<Home /> }
         />
-        <Route path="/register" element={<Register />} />
+        {/* <Route path="/register" element={<Register />} />
         <Route path="/forgot-password" element={<ForgotPass />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<Login />} /> */}
         <Route path="/:mediaType/:id" element={<Details />} />
-        <Route path="/search/:query" element={
-          <PrivateRoute>
-            <SearchResult />
-          </PrivateRoute>
-        } />
+        <Route path="/search/:query" element={<SearchResult />} />
         <Route
           path="/explore/:mediaType"
-          element={
-            <PrivateRoute>
-              <Explore />
-            </PrivateRoute>
-          }
+          element={<Explore />}
         />
-        {/* <Route path="*" element={<PagenotFound />} /> */}
+        <Route path="*" element={<PagenotFound />} />
       </Routes>
       <Footer />
     </>
