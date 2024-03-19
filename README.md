@@ -51,3 +51,6 @@
 <h3>Error Handling</h3>
 <ui>Error handling for API requests with user-friendly error messages.</ui>
 
+
+
+<img width="960" alt="Screenshot 2024-03-19 195621" src="https://github.com/saurav269/Movie-app/assets/110054999/367e07e4-2676-43dc-93b9-77d7caa83757">
